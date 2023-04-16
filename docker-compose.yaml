@@ -1,0 +1,34 @@
+# JuiceLab
+# https://github.com/psvm-io/juicelab
+# Federico Mattalia
+
+name: juicelab
+services:
+  www:
+    image: juicelab-www
+    build:
+      context: ./www
+      dockerfile: Dockerfile
+    networks:
+      - juicenet
+
+  kali:
+    image: juicelab-pentester
+    depends_on:
+      - www
+    stdin_open: true
+    tty: true
+    build:
+      context: ./kali
+      dockerfile: Dockerfile
+    volumes:
+      - data:/root/data
+    restart: always
+    networks:
+      - juicenet
+
+volumes:
+  data:
+
+networks:
+  juicenet:
