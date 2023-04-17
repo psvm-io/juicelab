@@ -5,7 +5,7 @@ JuiceLab
 ## Install
 ```
 $ git clone https://github.com/psvm-io/juicelab.git
-$ cd juicelab-main
+$ cd juicelab
 $ docker compose up -d
 ```
 
