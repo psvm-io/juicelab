@@ -10,7 +10,8 @@ RUN apt -y full-upgrade
 
 # Install Kali tools
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt -y install kali-linux-headless
+## Uncomment below to install tools automatically
+#RUN apt -y install kali-linux-headless
 
 # Install other tools
 RUN apt -y install nano iputils-ping
