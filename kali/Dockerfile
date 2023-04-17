@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt -y install kali-linux-headless
 
 # Install other tools
-RUN apt -y install nano
+RUN apt -y install nano iputils-ping
 
 # Create data directory
 RUN mkdir /root/data
