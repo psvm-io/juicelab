@@ -6,14 +6,19 @@ name: juicelab
 services:
   www:
     image: juicelab-www
+    container_name: juicelab-www
     build:
       context: ./www
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     networks:
-      - juicenet
+      juicenet:
+        ipv4_address: 10.92.0.2
 
   kali:
-    image: juicelab-pentester
+    image: juicelab-kali
+    container_name: juicelab-kali
     depends_on:
       - www
     stdin_open: true
@@ -25,10 +30,16 @@ services:
       - data:/root/data
     restart: always
     networks:
-      - juicenet
+      juicenet:
+        ipv4_address: 10.92.0.3
 
 volumes:
   data:
 
 networks:
   juicenet:
+    name: juicenet
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.92.0.0/24
