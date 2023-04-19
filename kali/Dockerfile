@@ -13,8 +13,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ## Uncomment below to install tools automatically
 #RUN apt -y install kali-linux-headless
 
-# Install other tools
-RUN apt -y install nano iputils-ping
+# Install basic tools
+RUN apt -y install nmap zaproxy nano iputils-ping
 
 # Create data directory
 RUN mkdir /root/data
