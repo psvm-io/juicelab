@@ -1,6 +1,6 @@
 # JuiceLab
 # https://github.com/psvm-io/juicelab
-# Federico Mattalia
+# Docker Compose file
 
 name: juicelab
 services:
@@ -14,11 +14,12 @@ services:
       - "3000:3000"
     networks:
       juicenet:
-        ipv4_address: 10.92.0.2
+        ipv4_address: ${WWW_IP}
 
   kali:
     image: juicelab-kali
     container_name: juicelab-kali
+    hostname: ${KALI_HOSTNAME}
     depends_on:
       - www
     stdin_open: true
@@ -28,10 +29,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - data:/root/data
-    restart: always
     networks:
       juicenet:
-        ipv4_address: 10.92.0.3
+        ipv4_address: ${KALI_IP}
 
 volumes:
   data:
@@ -42,4 +42,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.92.0.0/24
+        - subnet: ${SUBNET}

@@ -19,9 +19,11 @@ Install the tools you need using APT, or for the default headless tools use:
 apt -y install kali-linux-headless
 ``` 
 
-The target web application can be found at:
+By default, the target web application can be found at:
 - 10.92.0.2:3000  (from Kali)
 - http://localhost:3000  (from host)
+
+Custom IP addresses and hostname can be specified in the .env file
 
 ## Content
 * OWASP Juice Shop
